@@ -20,6 +20,7 @@ import {
   isValidEmail,
   isValidPassword,
   normalizeEmail,
+  REMEMBER_ME_SESSION_MAX_AGE_SECONDS,
   SESSION_MAX_AGE_SECONDS,
   verifyPassword
 } from "./lib/auth.js";
@@ -103,15 +104,22 @@ function sessionCookie(token, maxAge) {
     `session_token=${encodeURIComponent(token)}`,
     "HttpOnly",
     "Path=/",
-    "SameSite=Lax",
-    `Max-Age=${maxAge}`
+    "SameSite=Lax"
   ];
+
+  if (Number.isInteger(maxAge)) {
+    parts.push(`Max-Age=${maxAge}`);
+  }
 
   if (secureCookie) {
     parts.push("Secure");
   }
 
   return parts.join("; ");
+}
+
+function sessionDuration(rememberMe) {
+  return rememberMe ? REMEMBER_ME_SESSION_MAX_AGE_SECONDS : SESSION_MAX_AGE_SECONDS;
 }
 
 async function readJson(request) {
@@ -233,6 +241,7 @@ async function handleApi(request, response, url) {
     const body = await readJson(request);
     const rawLoginId = typeof body.loginId === "string" ? body.loginId.trim().toLowerCase() : "";
     const password = body.password;
+    const rememberMe = body.rememberMe === true;
     const user = rawLoginId ? await getUserByLoginId(rawLoginId) : null;
 
     if (!user || typeof password !== "string" || !(await verifyPassword(password, user.password_salt, user.password_hash))) {
@@ -242,14 +251,15 @@ async function handleApi(request, response, url) {
 
     clearLoginAttempts(request);
     const token = createOpaqueToken();
-    const expiresAt = new Date(Date.now() + SESSION_MAX_AGE_SECONDS * 1000);
+    const maxAge = sessionDuration(rememberMe);
+    const expiresAt = new Date(Date.now() + maxAge * 1000);
     await createSession(user.id, hashToken(token), expiresAt);
 
     sendJson(
       response,
       200,
       { user: publicUser(user) },
-      { "Set-Cookie": sessionCookie(token, SESSION_MAX_AGE_SECONDS) }
+      { "Set-Cookie": sessionCookie(token, rememberMe ? maxAge : undefined) }
     );
     return;
   }
@@ -332,7 +342,7 @@ async function handleApi(request, response, url) {
       response,
       201,
       { user },
-      { "Set-Cookie": sessionCookie(token, SESSION_MAX_AGE_SECONDS) }
+      { "Set-Cookie": sessionCookie(token) }
     );
     return;
   }

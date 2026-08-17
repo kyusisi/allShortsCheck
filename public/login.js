@@ -14,7 +14,8 @@ loginForm.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         loginId: formData.get("loginId"),
-        password: formData.get("password")
+        password: formData.get("password"),
+        rememberMe: formData.get("rememberMe") === "on"
       })
     });
     const payload = await response.json().catch(() => ({}));
