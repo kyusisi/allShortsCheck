@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="allShorts 로그인" />
+    <title>로그인 | allShorts</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/login.js" defer></script>
+  </head>
+  <body class="auth-body">
+    <main class="auth-layout">
+      <section class="auth-panel" aria-labelledby="login-title">
+        <a class="brand" href="/login">allShorts</a>
+        <div class="auth-content">
+          <p class="eyebrow">PRIVATE COLLECTION</p>
+          <h1 id="login-title">반가워요.</h1>
+          <p class="auth-copy">저장한 짧은 영상을 한곳에서 정리해보세요.</p>
+
+          <form id="login-form" class="auth-form">
+            <label class="form-field" for="login-id">
+              <span>로그인 ID</span>
+              <input id="login-id" name="loginId" type="text" autocomplete="username" required />
+            </label>
+            <label class="form-field" for="password">
+              <span>비밀번호</span>
+              <input id="password" name="password" type="password" autocomplete="current-password" required />
+            </label>
+            <button class="primary-button" type="submit">로그인</button>
+            <p id="login-feedback" class="form-feedback" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+      <aside class="auth-visual" aria-hidden="true">
+        <img src="/media/login-phones.png" alt="" />
+      </aside>
+    </main>
+  </body>
+</html>

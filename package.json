@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "dependencies": {
+    "mariadb": "^3.4.5"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"

@@ -1,6 +1,6 @@
 :root {
-  color: #171717;
-  background: #f7f7f5;
+  color: #191919;
+  background: #f3f2ed;
   font-family:
     Inter, Pretendard, "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -17,35 +17,351 @@ body {
   margin: 0;
 }
 
-.page {
-  display: flex;
-  min-height: 100vh;
-  padding: 32px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
+button,
+input {
+  font: inherit;
 }
 
-.label {
-  margin: 0 0 16px;
-  color: #d94841;
-  font-size: 13px;
-  font-weight: 700;
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.58;
+}
+
+.brand {
+  color: #191919;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #ce4939;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  color: #191919;
   letter-spacing: 0;
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(48px, 10vw, 96px);
-  line-height: 1;
+  margin-bottom: 14px;
+  font-size: 40px;
+  line-height: 1.14;
+}
+
+h2 {
+  margin-bottom: 0;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.auth-layout {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 0.88fr);
+}
+
+.auth-panel {
+  display: flex;
+  min-width: 0;
+  padding: 40px 10%;
+  flex-direction: column;
+  background: #f3f2ed;
+}
+
+.auth-content {
+  width: min(100%, 414px);
+  margin: auto 0;
+}
+
+.auth-copy {
+  max-width: 340px;
+  margin-bottom: 34px;
+  color: #5b5b57;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.auth-form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+  color: #383836;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.form-field input {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid #c9c8c1;
+  border-radius: 6px;
+  outline: none;
+  padding: 12px 13px;
+  color: #191919;
+  background: #ffffff;
+}
+
+.form-field input:focus {
+  border-color: #1d7f85;
+  box-shadow: 0 0 0 3px rgba(29, 127, 133, 0.16);
+}
+
+.primary-button,
+.secondary-button,
+.quiet-button {
+  min-height: 44px;
+  border-radius: 6px;
+  font-weight: 800;
   letter-spacing: 0;
 }
 
-.description {
-  max-width: 520px;
-  margin: 24px 0 0;
-  color: #626262;
-  font-size: 16px;
-  line-height: 1.7;
+.primary-button {
+  border: 1px solid #ce4939;
+  padding: 10px 16px;
+  color: #ffffff;
+  background: #ce4939;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #b93d30;
+}
+
+.secondary-button {
+  border: 1px solid #1d7f85;
+  padding: 10px 16px;
+  color: #155a5f;
+  background: #e8f5f4;
+}
+
+.quiet-button {
+  min-height: auto;
+  border: 0;
+  padding: 6px 0;
+  color: #565652;
+  background: transparent;
+}
+
+.quiet-button:hover {
+  color: #ce4939;
+}
+
+.form-feedback {
+  min-height: 21px;
+  margin: 0;
+  color: #b93d30;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.auth-visual {
+  min-height: 100vh;
+  overflow: hidden;
+  background: #e9e7df;
+}
+
+.auth-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.app-shell {
+  width: min(100%, 1180px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 26px 42px 72px;
+}
+
+.app-header {
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d6d4cc;
+}
+
+.account-actions {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.account-name {
+  max-width: 320px;
+  overflow: hidden;
+  color: #565652;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.collection-section {
+  padding: 88px 0 70px;
+}
+
+.section-intro {
+  margin-bottom: 34px;
+}
+
+.compact-intro {
+  margin-bottom: 0;
+}
+
+.empty-collection {
+  padding: 38px 0;
+  border-top: 1px solid #d6d4cc;
+  border-bottom: 1px solid #d6d4cc;
+  color: #696965;
+}
+
+.empty-collection p {
+  margin: 0;
+}
+
+.admin-panel {
+  display: grid;
+  gap: 24px;
+  padding: 28px;
+  border: 1px solid #d6d4cc;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.invite-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: end;
+}
+
+.invite-form .primary-button {
+  min-width: 140px;
+}
+
+.invite-result {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.invite-result input {
+  min-width: 0;
+  min-height: 44px;
+  border: 1px solid #c9c8c1;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #3d3d39;
+  background: #f8f8f5;
+}
+
+.invite-layout {
+  display: grid;
+  min-height: 100vh;
+  padding: 40px;
+  align-content: center;
+  justify-items: center;
+  background: #dfeeed;
+}
+
+.invite-layout > .brand {
+  position: fixed;
+  top: 34px;
+  left: 40px;
+}
+
+.invite-card {
+  width: min(100%, 460px);
+  padding: 34px;
+  border: 1px solid #b5d3d0;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+@media (max-width: 800px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-visual {
+    min-height: 250px;
+    order: -1;
+  }
+
+  .auth-visual img {
+    object-position: center 57%;
+  }
+
+  .auth-panel {
+    min-height: calc(100vh - 250px);
+    padding: 30px 24px 42px;
+  }
+
+  .auth-content {
+    margin: 56px 0 0;
+  }
+
+  .app-shell {
+    padding: 22px 24px 56px;
+  }
+
+  .collection-section {
+    padding: 64px 0 54px;
+  }
+
+  .invite-layout {
+    padding: 24px;
+  }
+
+  .invite-layout > .brand {
+    position: static;
+    justify-self: start;
+    margin-bottom: 52px;
+  }
+}
+
+@media (max-width: 560px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  .account-name {
+    display: none;
+  }
+
+  .invite-form,
+  .invite-result {
+    grid-template-columns: 1fr;
+  }
+
+  .invite-form .primary-button {
+    width: 100%;
+  }
+
+  .admin-panel,
+  .invite-card {
+    padding: 24px;
+  }
 }

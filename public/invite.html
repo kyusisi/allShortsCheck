@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="allShorts 초대 수락" />
+    <title>초대 수락 | allShorts</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/invite.js" defer></script>
+  </head>
+  <body class="invite-body">
+    <main class="invite-layout">
+      <a class="brand" href="/login">allShorts</a>
+      <section class="invite-card" aria-labelledby="invite-title">
+        <p class="eyebrow">INVITATION</p>
+        <h1 id="invite-title">초대를 수락하세요.</h1>
+        <form id="accept-invite-form" class="auth-form" hidden>
+          <label class="form-field" for="invited-email">
+            <span>이메일</span>
+            <input id="invited-email" type="email" readonly />
+          </label>
+          <label class="form-field" for="new-password">
+            <span>비밀번호</span>
+            <input id="new-password" type="password" autocomplete="new-password" required />
+          </label>
+          <label class="form-field" for="confirm-password">
+            <span>비밀번호 확인</span>
+            <input id="confirm-password" type="password" autocomplete="new-password" required />
+          </label>
+          <button class="primary-button" type="submit">계정 만들기</button>
+        </form>
+        <p id="invite-feedback" class="form-feedback" aria-live="polite"></p>
+      </section>
+    </main>
+  </body>
+</html>

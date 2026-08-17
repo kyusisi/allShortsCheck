@@ -7,17 +7,49 @@
       name="description"
       content="유튜브 쇼츠와 인스타 릴스를 한곳에 저장하고 모아보는 웹사이트"
     />
-    <title>Shorts Collection</title>
+    <title>allShorts</title>
     <link rel="stylesheet" href="/styles.css" />
     <script src="/app.js" defer></script>
   </head>
   <body>
-    <main class="page">
-      <p class="label">SHORTS COLLECTION</p>
-      <h1 id="message">hello world</h1>
-      <p class="description">
-        유튜브 쇼츠와 인스타 릴스를 한눈에 모아볼 공간을 준비하고 있습니다.
-      </p>
+    <main class="app-shell">
+      <header class="app-header">
+        <a class="brand" href="/">allShorts</a>
+        <div class="account-actions">
+          <span id="account-name" class="account-name"></span>
+          <button id="logout-button" class="quiet-button" type="button">로그아웃</button>
+        </div>
+      </header>
+
+      <section class="collection-section" aria-labelledby="collection-title">
+        <div class="section-intro">
+          <p class="eyebrow">MY COLLECTION</p>
+          <h1 id="collection-title">저장한 영상</h1>
+        </div>
+        <div class="empty-collection">
+          <p>아직 저장한 영상이 없습니다.</p>
+        </div>
+      </section>
+
+      <section id="admin-panel" class="admin-panel" aria-labelledby="invite-title" hidden>
+        <div class="section-intro compact-intro">
+          <p class="eyebrow">ADMIN</p>
+          <h2 id="invite-title">초대 관리</h2>
+        </div>
+
+        <form id="invite-form" class="invite-form">
+          <label class="form-field" for="invite-email">
+            <span>초대할 이메일</span>
+            <input id="invite-email" name="email" type="email" autocomplete="email" required />
+          </label>
+          <button class="primary-button" type="submit">초대 링크 만들기</button>
+        </form>
+        <p id="invite-feedback" class="form-feedback" aria-live="polite"></p>
+        <div id="invite-result" class="invite-result" hidden>
+          <input id="invite-link" type="text" readonly aria-label="초대 링크" />
+          <button id="copy-invite-link" class="secondary-button" type="button">링크 복사</button>
+        </div>
+      </section>
     </main>
   </body>
 </html>
