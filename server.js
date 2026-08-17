@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 const currentDir = dirname(fileURLToPath(import.meta.url));
 const publicDir = join(currentDir, "public");
 const port = Number(process.env.PORT || 3000);
+const host = process.env.HOST || "127.0.0.1";
 
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
@@ -68,6 +69,6 @@ const server = createServer(async (request, response) => {
   }
 });
 
-server.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+server.listen(port, host, () => {
+  console.log(`Server is running at http://${host}:${port}`);
 });
